@@ -1,0 +1,15 @@
+TABLE Productos {
+  id integer [pk]
+  nombre VARCHAR(255)
+  categoria VARCHAR(255)
+  precioUnitario DECIMAL(10,2)
+  }
+
+  TABLE Ventas {
+  id integer [pk]
+  producto_id integer [ref: > Productos.id]
+  cantidad integer
+  precioTotal DECIMAL(10,2)
+  fechaVenta date 
+  vendedor varchar(255)
+  }

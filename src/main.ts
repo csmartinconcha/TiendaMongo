@@ -7,8 +7,8 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   const config = new DocumentBuilder()
-  .setTitle('Archivos')
-  .setDescription('API de Archivos')
+  .setTitle('Mongo')
+  .setDescription('API de Mongo')
   .setVersion('1.0')
   .build()
 const document = SwaggerModule.createDocument(app, config);

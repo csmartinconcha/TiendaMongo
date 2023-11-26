@@ -3,13 +3,13 @@ import { Prop, Schema } from "@nestjs/mongoose";
 
 @Schema({ collection: "producto"})
 export class Producto {
-  @Prop({ nombre: true })
+  @Prop({ nombre: "nombre" })
   nombre: string;
 
-  @Prop({ categoria: true })
+  @Prop({ categoria: "categoria" })
   categoria: string;
 
-  @Prop({ precioUnitario: true })
+  @Prop({ precioUnitario: "precioUnitario" })
   precioUnitario: number;
 }
 

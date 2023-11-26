@@ -1,20 +1,26 @@
+/* eslint-disable prettier/prettier */
 import { Prop, Schema } from "@nestjs/mongoose";
+import { Producto } from "src/producto/schemas/producto.schema";
 
 
-@Schema()
-export class Venta extends Document {
+
+@Schema({ collection: "venta"})
+export class Venta {
   @Prop({ type: MongooseSchema.Types.ObjectId, ref: 'Producto', required: true })
   producto: Producto;
 
   @Prop({ cantidad: true })
   cantidad: number;
 
-  @Prop({ required: true })
+  @Prop({ precioTotal: true })
   precioTotal: number;
 
   @Prop({ type: Date, default: Date.now })
   fechaVenta: Date;
 
-  @Prop({ required: true })
+  @Prop({ vendedor: true })
   vendedor: string;
 }
+  
+  
+

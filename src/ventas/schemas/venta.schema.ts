@@ -1,5 +1,9 @@
 /* eslint-disable prettier/prettier */
-import { Schema } from "@nestjs/mongoose";
+import { Prop, Schema } from "@nestjs/mongoose";
 
 @Schema({ collection: "ventas" })
-export class Venta {}
+export class Ventas {
+
+    @Prop({ name: nombre }) 
+    nombre: string;
+}

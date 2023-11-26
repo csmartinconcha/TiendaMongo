@@ -1,0 +1,36 @@
+// Insertar al menos 3 productos en la colección "Producto"
+db.producto.insertMany([
+  { nombre: 'Teléfono1', categoria: 'Teléfonos', precioUnitario: 300 },
+  { nombre: 'Teléfono2', categoria: 'Teléfonos', precioUnitario: 350 },
+  { nombre: 'Teléfono3', categoria: 'Teléfonos', precioUnitario: 400 },
+
+  { nombre: 'Televisor1', categoria: 'Televisores', precioUnitario: 500 },
+  { nombre: 'Televisor2', categoria: 'Televisores', precioUnitario: 600 },
+  { nombre: 'Televisor3', categoria: 'Televisores', precioUnitario: 700 },
+
+  { nombre: 'Computadora1', categoria: 'Computadoras', precioUnitario: 800 },
+  { nombre: 'Computadora2', categoria: 'Computadoras', precioUnitario: 900 },
+  { nombre: 'Computadora3', categoria: 'Computadoras', precioUnitario: 1000 },
+]);
+
+// Obtener los IDs de los productos insertados
+const idTelefonos = db.producto.find({ categoria: 'Teléfonos' }, { _id: 1 }).toArray();
+const idTelevisores = db.producto.find({ categoria: 'Televisores' }, { _id: 1 }).toArray();
+const idComputadoras = db.producto.find({ categoria: 'Computadoras' }, { _id: 1 }).toArray();
+
+// Insertar al menos 1 venta por cada producto en la colección "Venta"
+db.venta.insertMany([
+  { producto: idTelefonos[0]._id, cantidad: 2, precioTotal: 600, fechaVenta: new Date(), vendedor: 'Vendedor1' },
+  { producto: idTelevisores[0]._id, cantidad: 1, precioTotal: 500, fechaVenta: new Date(), vendedor: 'Vendedor2' },
+  { producto: idComputadoras[0]._id, cantidad: 3, precioTotal: 2400, fechaVenta: new Date(), vendedor: 'Vendedor3' },
+
+  { producto: idTelefonos[1]._id, cantidad: 1, precioTotal: 350, fechaVenta: new Date(), vendedor: 'Vendedor2' },
+  { producto: idTelevisores[1]._id, cantidad: 3, precioTotal: 1800, fechaVenta: new Date(), vendedor: 'Vendedor3' },
+  { producto: idComputadoras[1]._id, cantidad: 2, precioTotal: 1800, fechaVenta: new Date(), vendedor: 'Vendedor1' },
+
+  { producto: idTelefonos[2]._id, cantidad: 1, precioTotal: 400, fechaVenta: new Date(), vendedor: 'Vendedor3' },
+  { producto: idTelevisores[2]._id, cantidad: 2, precioTotal: 1400, fechaVenta: new Date(), vendedor: 'Vendedor1' },
+  { producto: idComputadoras[2]._id, cantidad: 2, precioTotal: 2000, fechaVenta: new Date(), vendedor: 'Vendedor2' },
+]);
+
+
